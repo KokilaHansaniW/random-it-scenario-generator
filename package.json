@@ -1,0 +1,17 @@
+{
+  "name": "random-it-scenario-generator",
+  "version": "1.0.0",
+  "description": "API to generate random IT scenarios based on user input",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "supertest": "^6.3.0"
+  }
+}

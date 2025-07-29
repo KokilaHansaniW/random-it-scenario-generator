@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Random IT Scenario Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; }
+    button { padding: 8px 16px; font-size: 1rem; }
+    pre { background:#f4f4f4; padding:12px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <h1>Random IT Scenario Generator (API Demo)</h1>
+
+  <!-- Simple form to choose filters -->
+  <label>
+    Technology:
+    <select id="tech">
+      <option value="">(any)</option>
+      <option>Cloud Computing</option>
+      <option>Cybersecurity</option>
+      <option>DevOps</option>
+    </select>
+  </label>
+
+  <label>
+    Role:
+    <select id="role">
+      <option value="">(any)</option>
+      <option>System Administrator</option>
+      <option>Software Engineer</option>
+      <option>Security Analyst</option>
+    </select>
+  </label>
+
+  <label>
+    Environment:
+    <select id="env">
+      <option value="">(any)</option>
+      <option>Cloud Infrastructure</option>
+      <option>Enterprise Network</option>
+      <option>On-Prem Data Center</option>
+    </select>
+  </label>
+
+  <button id="btn">Generate</button>
+
+  <h2>Result</h2>
+  <pre id="output">Click “Generate” to fetch a scenario…</pre>
+
+  <!-- Vanilla / pure JS only -->
+  <script>
+    const btn = document.getElementById('btn');
+    const out = document.getElementById('output');
+
+    btn.addEventListener('click', async () => {
+      // Build the query string from the dropdowns
+      const q = new URLSearchParams({
+        technology: document.getElementById('tech').value,
+        role: document.getElementById('role').value,
+        environment: document.getElementById('env').value
+      });
+
+      try {
+        // Call your local API (adjust port if needed)
+        const res = await fetch(`http://localhost:3000/api/scenario?${q}`);
+        const data = await res.json();
+        out.textContent = JSON.stringify(data, null, 2); // Pretty‑print JSON
+      } catch (err) {
+        out.textContent = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
