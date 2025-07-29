@@ -9,7 +9,7 @@ This project is a REST API that generates a random IT-related scenario based on 
 ### Features
 - Filters scenarios based on query parameters
 - Returns a random challenge, incident, and troubleshooting step
-- Built using Node.js, Express, and tested using Jest (TDD approach)
+- Built using Javascript, and tested using TDD approach
 
 ## Getting Started
 
@@ -29,15 +29,15 @@ GET /api/scenario?technology=DevOps&role=Software%20Engineer
 
 ```json
 {
-  "inputs": {
-    "technology": "DevOps",
-    "role": "Software Engineer",
-    "environment": null
+  "inputs":{
+    "technology":"DevOps",
+    "role":"Software Engineer",
+    "environment":null
   },
-  "scenario": {
-    "challenge": "CI pipeline fails on test stage.",
-    "incident": "Test environment is missing required dependencies.",
-    "troubleshooting": "Update the build script to install all test dependencies."
+  "scenario":{
+    "challenge":"CI pipeline fails during the test stage.",
+    "incident":"Environment variables missing in the CI runner.",
+    "troubleshooting":"Add the variables to CI settings and retry."
   }
 }
 ```
